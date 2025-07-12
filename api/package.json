@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
+    "start": "node index.js",
     "dev": "nodemon index.ts",
     "test": "jest",
     "seed": "ts-node fixtures.ts"

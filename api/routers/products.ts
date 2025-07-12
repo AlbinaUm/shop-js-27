@@ -1,10 +1,12 @@
 import express from 'express';
 import Product from "../models/Product";
-import auth from "../middleware/auth";
+import {imagesUpload} from "../middleware/multer";
+import {ProductWithoutId} from "../types";
+import {Error} from "mongoose";
 
 const productRouter = express.Router();
 
-productRouter.get('/' , auth, async (req, res, next) => {
+productRouter.get('/', async (req, res, next) => {
     try {
         const category_id = req.query.category as string;
         const filter: {category?: string} = {};
@@ -37,5 +39,28 @@ productRouter.get('/:id', async (req, res, next) => {
 });
 
 
+productRouter.post('/', imagesUpload.single('image'), async (req, res, next) => {
+    try {
+
+        const newProduct: ProductWithoutId = {
+            category: req.body.category,
+            title: req.body.title,
+            description: req.body.description,
+            price: req.body.price,
+            image: req.file ? 'images/' + req.file.filename : null,
+        };
+
+        const product = new Product(newProduct);
+        await product.save();
+        res.send(product);
+    } catch (error) {
+        if (error instanceof Error.ValidationError  || error instanceof Error.CastError) {
+            res.status(400).send(error);
+            return;
+        }
+
+        next(error);
+    }
+});
 
 export default productRouter;
