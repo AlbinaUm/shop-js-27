@@ -21,6 +21,8 @@ services:
     depends_on:
       - mongo
     restart: always
+    volumes:
+      - ./uploads/images:/app/public/images
 
   frontend:
     build: ./frontend
