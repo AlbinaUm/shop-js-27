@@ -12,6 +12,6 @@ const config = {
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     },
     publicPath: path_1.default.join(rootPath, 'public'),
-    db: 'mongodb://localhost/shop-js-27'
+    db: process.env.MONGO_URL || 'mongodb://localhost:27017/test-shop',
 };
 exports.default = config;

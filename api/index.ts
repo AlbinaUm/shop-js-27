@@ -12,7 +12,7 @@ const app = express();
 const port = 8000;
 
 app.use(cors({
-    origin: '*',
+    origin: 'http://188.166.167.232:3000',
     credentials: true,
 }));
 
