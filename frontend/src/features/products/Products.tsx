@@ -29,7 +29,7 @@ const Products = () => {
             <Grid container justifyContent="space-between" alignItems="center">
                 <Grid>
                     <Typography variant="h4">
-                        Products123
+                        Products
                     </Typography>
                 </Grid>
                 <Grid>
