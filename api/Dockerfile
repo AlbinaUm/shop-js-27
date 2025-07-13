@@ -7,6 +7,6 @@ RUN npm install
 
 COPY . .
 
-RUN npn run build
+RUN npm run build
 EXPOSE 8000
 CMD ["node", "index.js"]
