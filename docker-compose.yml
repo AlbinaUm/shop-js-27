@@ -11,6 +11,16 @@ services:
     volumes:
       - mongo_data:/data/db
 
+  test:
+    build:
+      context: ./tests
+    container_name: app-tests
+    command: npm run codeceptjs
+    depends_on:
+      - mongo
+    volumes:
+      - ./tests:/app
+
   api:
     build: ./api
     container_name: app-backend
