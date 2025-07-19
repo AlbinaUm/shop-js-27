@@ -10,6 +10,17 @@ services:
       - '27017:27017'
     volumes:
       - mongo_data:/data/db
+  test:
+    build:
+      context: ./tests
+    container_name: app-tests
+    command: npm run codeceptjs:headless
+    depends_on:
+      - mongo
+    volumes:
+      - ./tests:/app
+    environment:
+      - HEADLESS=true
 
   api:
     build: ./api
