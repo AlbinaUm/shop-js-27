@@ -6,15 +6,7 @@ on:
       - main
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Run e2e tests via Docker
-        run: docker-compose run --rm test
-  
   deploy:
-    needs: test
     runs-on: ubuntu-latest
 
     steps:
@@ -34,5 +26,5 @@ jobs:
             cd shop-js-27
             git pull origin main
             docker-compose down
-            docker-compose up -d --build
+            docker-compose run --rm test && docker-compose up -d --build
           EOF
