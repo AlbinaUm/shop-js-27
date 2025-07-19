@@ -15,7 +15,7 @@ services:
     build:
       context: ./tests
     container_name: app-tests
-    command: npm run codeceptjs
+    command: npm run codeceptjs:headless
     depends_on:
       - mongo
     volumes:

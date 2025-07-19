@@ -8,4 +8,4 @@ RUN npm install
 COPY . .
 
 # Запуск тестов в headless режиме
-CMD ["npm", "run", "codeceptjs"]
+CMD ["npm", "run", "codeceptjs:headless"]
