@@ -6,7 +6,7 @@
     "build": "tsc",
     "start": "node index.js",
     "dev": "nodemon index.ts",
-    "test": "jest",
+    "test": "jest --config jest.config.js",
     "seed": "ts-node fixtures.ts"
   },
   "keywords": [],
