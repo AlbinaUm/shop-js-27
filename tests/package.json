@@ -5,14 +5,10 @@
     "scripts": {
         "codeceptjs": "codeceptjs run --steps",
         "codeceptjs:headless": "HEADLESS=true codeceptjs run --steps",
-        "codeceptjs:ui": "codecept-ui --app",
-        "codeceptjs:demo": "codeceptjs run --steps -c node_modules/@codeceptjs/examples/codecept.puppeteer.conf.js",
-        "codeceptjs:demo:headless": "HEADLESS=true codeceptjs run --steps -c node_modules/@codeceptjs/examples/codecept.puppeteer.conf.js",
-        "codeceptjs:demo:ui": "codecept-ui --app  -c node_modules/@codeceptjs/examples/codecept.puppeteer.conf.js"
+        "codeceptjs:ui": "codecept-ui --app"
     },
     "devDependencies": {
         "@codeceptjs/configure": "^1.0.4",
-        "@codeceptjs/examples": "^1.2.4",
         "@codeceptjs/ui": "^1.2.4",
         "@types/node": "^22.15.30",
         "codeceptjs": "^3.7.3",
