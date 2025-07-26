@@ -1,5 +1,5 @@
-# Используем Node.js с Debian (нужен apt для установки зависимостей Puppeteer)
-FROM node:22-alpine
+# Используем Node.js с Debian (нужен apt для установки Puppeteer-зависимостей)
+FROM node:22-slim
 
 # Устанавливаем системные зависимости, нужные для Chromium
 RUN apt-get update && apt-get install -y \
@@ -32,7 +32,7 @@ COPY ./tests .
 # Установка зависимостей
 RUN npm install
 
-# Включаем headless-режим через ENV (можно также через .env.test.test)
+# Включаем headless-режим через ENV (если используешь)
 ENV HEADLESS=true
 
 # Запуск тестов
