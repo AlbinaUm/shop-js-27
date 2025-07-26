@@ -28,6 +28,20 @@ jobs:
       
         - name: Set up Docker Buildx
           uses: docker/setup-buildx-action@v3
+
+        - name: Create .env files for test containers
+          run: |
+            echo "PORT=8000" > ./api/.env
+            echo "MONGO_URL=mongodb://mongo:27017/test-db" >> ./api/.env
+            echo "GITHUB_CLIENT_ID=dummy" >> ./api/.env
+            echo "GITHUB_SECRET=dummy" >> ./api/.env
+            echo "GOOGLE_CLIENT_ID=dummy" >> ./api/.env
+            echo "GOOGLE_CLIENT_SECRET=dummy" >> ./api/.env
+            echo "JWT_SECRET=dev-secret" >> ./api/.env
+            echo "JWT_SECRET_REFRESH_TOKEN=dev-secret-refresh" >> ./api/.env
+            echo "PORT=3000" > ./frontend/.env
+            echo "VITE_API_URL=http://localhost:8000/api" >> ./frontend/.env
+            echo "CODECEPT_BASE_URL=http://localhost:3000" > ./tests/.env.test
   
         - name: Build and start test containers (frontend + api + mongo)
           run: |
