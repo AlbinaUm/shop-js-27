@@ -30,7 +30,7 @@ WORKDIR /tests
 COPY ./tests .
 
 # Установка зависимостей
-RUN npm install
+RUN npm ci
 
 # Включаем headless-режим через ENV (если используешь)
 ENV HEADLESS=true
