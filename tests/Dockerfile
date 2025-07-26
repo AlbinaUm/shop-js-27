@@ -30,8 +30,7 @@ WORKDIR /tests
 COPY ./tests .
 
 # Установка зависимостей
-RUN npm ci
-
+RUN npm install --legacy-peer-deps
 # Включаем headless-режим через ENV (если используешь)
 ENV HEADLESS=true
 
