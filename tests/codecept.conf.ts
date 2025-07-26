@@ -46,7 +46,6 @@ exports.config = {
     { pattern: 'wait.*', timeout: 0 },
     { pattern: 'amOnPage', timeout: 0 }
   ],
-  tests: './*_test.ts',
   name: 'tests',
   translation: 'ru-RU'
 }
