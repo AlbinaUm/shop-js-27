@@ -1,10 +1,14 @@
+require('dotenv').config();
+
 exports.config = {
   output: './output',
   helpers: {
     Puppeteer: {
-      url: 'http://localhost:5173',
-      show: true,
-      windowSize: '1200x900'
+      url: process.env.NEXT_PUBLIC_API_URL || 'http://frontend:3000',
+      show: process.env.HEADLESS !== 'true',
+      windowSize: '1200x900',
+      waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT || '5000'),
+      restart: true
     }
   },
   include: {
@@ -12,7 +16,7 @@ exports.config = {
   },
   mocha: {},
   bootstrap: null,
-  timeout: null,
+  timeout: parseInt(process.env.TEST_TIMEOUT || '10000'),
   teardown: null,
   hooks: [],
   gherkin: {
@@ -38,14 +42,9 @@ exports.config = {
     pauseOnFail: {}
   },
   stepTimeout: 0,
-  stepTimeoutOverride: [{
-      pattern: 'wait.*',
-      timeout: 0
-    },
-    {
-      pattern: 'amOnPage',
-      timeout: 0
-    }
+  stepTimeoutOverride: [
+    { pattern: 'wait.*', timeout: 0 },
+    { pattern: 'amOnPage', timeout: 0 }
   ],
   tests: './*_test.ts',
   name: 'tests',

@@ -34,5 +34,18 @@ services:
       - api
     restart: always
 
+  puppeteer-test:
+    build:
+      context: .
+      dockerfile: ./tests/Dockerfile
+    container_name: puppeteer-test
+    command: ["npm", "run", "codeceptjs:headless"]
+    env_file:
+      - ./tests/.env.test
+    depends_on:
+      - frontend
+      - api
+    profiles: ["test"]
+    shm_size: '2gb'  # важно для работы headless Chrome
 volumes:
   mongo_data:
